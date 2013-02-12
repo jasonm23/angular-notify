@@ -1,3 +1,22 @@
 <html>
-<body><h1>Hello there</h1></body>
+	<head>
+		<title>Test notify script</title>
+
+		<script type="text/javascript" src="components/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="src/notify.js"></script>
+<script type="text/javascript" src="example/example.js"></script>
+	</head>
+	<body ng-app="exampleApp">
+		<div ng-controller="ExampleCtrl">
+			<h1>Hello there</h1>
+			<button ng-click="exampleClick()">Example Button Click</button>
+			<h1>Test watch</h1>
+			<input type="text" ng-model="xmp" />
+			<p>Para: {{xmp}}</p>
+
+			<!-- Required Directive -->
+			<notify model="xmp" />
+		</div>
+	</body>
 </html>

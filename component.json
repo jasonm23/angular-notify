@@ -1,0 +1,9 @@
+{
+	"name":"Angular Notify",
+	"version":"0.0.1",
+	"main":"notify.js",
+	"dependencies":{
+		"jquery":null,
+		"angular":null
+	}
+}
