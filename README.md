@@ -1,4 +1,4 @@
 angular-notify
 ==============
 
-A notification system built with angularjs
+A notification system built with angularjs.
