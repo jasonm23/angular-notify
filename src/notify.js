@@ -1,47 +1,42 @@
+/**
+ * 
+ * 
+ * @author Nathan Norton <nthnnrtn@gmail.com>
+ */
 angular.module('notify', [])
 
 // The simple notify directive.
 .directive('notify', function(){
 	
 	return {
-		template:'<div id="notify-box"></div>',
-		replace:true,
-		restrict:'E',
+		
+		replace:false,
+		restrict:'A',
 		link: function(scope, iElement, iAttrs, controller){
-
-			var showing = false;
+			
+			var ele = $(iElement);
+			
+			// Default: make sure the element is hidden.
+			ele.css("display", "none");
 
 			function showAlert(){
-				if($("#notify-box").css("display") === "none"){
-					$("#notify-box").slideDown("slow");
+				if(ele.css("display") === "none"){
+					ele.slideDown("slow");
 				}
+				
 				setTimeout(function(){hideAlert();}, 3000);
-			}
+			} 
 
 			function hideAlert(){
-				$("#notify-box").slideUp("slow");
+				ele.slideUp("slow");
 			}	
 
 			scope.$watch(iAttrs.model, function(newVar, oldVar){
-				if(newVar != oldVar){
-					$("#notify-box").html("You've been notified!:" + newVar);
+				if(newVar !== oldVar){
+					ele.html( newVar );
 					showAlert();
 				}
 			},true);
-
 		}
-	}
-})
-
-
-// The service to modify the directive.
-.provider('notify', function(){
-	
-	return {
-	
-		$get: function(){
-			// does nothing
-			alert("something");
-		}
-	}
+	};
 });
