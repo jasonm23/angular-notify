@@ -3,21 +3,18 @@
 
 
 // base path, that will be used to resolve files and exclude
-basePath = '';
+basePath = '../';
 
 
 // list of files / patterns to load in the browser
 files = [
-  	'components/angular/angular.js',
-  	'components/jquery/jquery.js',
-	'tests/lib/angular/angular-mocks.js',
-	'tests/lib/angular/angular-scenario.js',
-	
-	JASMINE,
-	JASMINE_ADAPTER,
-
-  	'src/notify.js',
-  	'tests/unit/*.js'
+  	 JASMINE,
+  JASMINE_ADAPTER,
+  'app/lib/jquery/jquery.js',
+  'app/lib/angular/angular.js',
+  'test/lib/angular/angular-mocks.js',
+  'app/*.js',
+  'test/unit/*.js'
 ];
 
 
