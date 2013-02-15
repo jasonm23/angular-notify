@@ -8,13 +8,16 @@ basePath = '';
 
 // list of files / patterns to load in the browser
 files = [
-  JASMINE,
-  JASMINE_ADAPTER,
-  'components/angular/angular.js',
-  'components/jquery/jquery.js',
+  	'components/angular/angular.js',
+  	'components/jquery/jquery.js',
+	'tests/lib/angular/angular-mocks.js',
+	'tests/lib/angular/angular-scenario.js',
+	
+	JASMINE,
+	JASMINE_ADAPTER,
 
-  'src/notify.js',
-  'tests/notifyTests.js'
+  	'src/notify.js',
+  	'tests/unit/*.js'
 ];
 
 
