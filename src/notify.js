@@ -1,6 +1,4 @@
 /**
- * 
- * 
  * @author Nathan Norton <nthnnrtn@gmail.com>
  */
 angular.module('notify', [])
@@ -10,7 +8,7 @@ angular.module('notify', [])
 	
 	return {
 		
-		replace:false,
+		replace:false, 
 		restrict:'A',
 		link: function(scope, iElement, iAttrs, controller){
 			
@@ -25,7 +23,8 @@ angular.module('notify', [])
 				}
 				
 				setTimeout(function(){hideAlert();}, 3000);
-			} 
+			}
+			
 
 			function hideAlert(){
 				ele.slideUp("slow");
