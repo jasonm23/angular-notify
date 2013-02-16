@@ -10,9 +10,6 @@ angular.module("exampleApp", ['notify'])
 			"duration":3000		
 		});
 	}
-
-
+	
 	$scope.xmp = "test";
-
-
 }]);
