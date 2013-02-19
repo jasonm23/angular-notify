@@ -1,8 +1,25 @@
-angular.module('notify', [])
+angular.module('notifier.services', [])
 
-// The simple notify directive.
+
+.factory('notifierService', ['$rootScope', function($scope){
+
+	var notifyImpl = {};
+
+	/*
+	 * Sends out the notification.
+	 *
+	 * @param props properites object for the nofication.
+	 */
+	notifyImpl.sendNotification = function( props ){
+		$scope.$broadcast("notify.newNotification", props);
+	}
+	return notifyImpl;
+}]);
+
+
+angular.module('notifier.directives', [])
 .directive('notify', function(){
-	
+
 	return {
 		
 		replace:false, 
@@ -14,25 +31,22 @@ angular.module('notify', [])
 			// Default: make sure the element is hidden.
 			ele.css("display", "none");
 
-			function showAlert(){
+			function showAlert(element){
 				if(ele.css("display") === "none"){
 					ele.slideDown("slow");
-				}
-				
+				}				
 				setTimeout(function(){hideAlert();}, 3000);
 			}
 			
-
-			function hideAlert(){
+			function hideAlert(element){
 				ele.slideUp("slow");
-			}	
+			}
 
-			scope.$watch(iAttrs.model, function(newVar, oldVar){
-				if(newVar !== oldVar){
-					ele.html( newVar );
-					showAlert();
-				}
-			},true);
+			// When there is a new notification, we create a new element and 
+			// bind the events to close it.
+			scope.$on("notify.newNotification", function(event, somethingelse){
+				var n_ele = _.clone(ele);
+			});
 		}
 	};
-}); 
+});
