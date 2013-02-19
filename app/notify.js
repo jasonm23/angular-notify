@@ -1,6 +1,3 @@
-/**
- * @author Nathan Norton <nthnnrtn@gmail.com>
- */
 angular.module('notify', [])
 
 // The simple notify directive.
