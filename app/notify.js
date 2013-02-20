@@ -14,6 +14,8 @@ angular.module('notifier.services', [])
 		$scope.$broadcast("notify.newNotification", props);
 	}
 	return notifyImpl;
+
+
 }]);
 
 
@@ -28,24 +30,36 @@ angular.module('notifier.directives', [])
 			
 			var ele = $(iElement);
 			
+			var extra_class = "";
+			var duration = 1000;
+			
 			// Default: make sure the element is hidden.
 			ele.css("display", "none");
 
-			function showAlert(element){
+			function showAlert(){
 				if(ele.css("display") === "none"){
 					ele.slideDown("slow");
 				}				
-				setTimeout(function(){hideAlert();}, 3000);
+				setTimeout(function(){hideAlert();}, duration);
 			}
 			
-			function hideAlert(element){
+			function hideAlert(){
 				ele.slideUp("slow");
 			}
 
-			// When there is a new notification, we create a new element and 
-			// bind the events to close it.
+			// Listen to the broadcast the service sends out.
 			scope.$on("notify.newNotification", function(event, somethingelse){
-				var n_ele = _.clone(ele);
+				
+				// Remove the old applied class.
+				ele.removeClass(extra_class);
+				
+				extra_class = somethingelse.level;
+				duration = somethingelse.duration;
+
+				ele.html(somethingelse.text);
+				ele.addClass(extra_class);
+
+				showAlert();
 			});
 		}
 	};

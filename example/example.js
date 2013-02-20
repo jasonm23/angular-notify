@@ -5,14 +5,22 @@ angular.module("exampleApp", ['notifier.directives', 'notifier.services'])
 
 	function($scope, notify){
 	
+		$scope.extra_classes = [
+			{id: 1, name:"alert"},
+			{id: 2, name:"alert alert-danger"},
+			{id: 3, name:"alert alert-success"}
+		];
+
+		$scope.extra_class = 1;
+		$scope.duration = 3000;
+		$scope.text = "Hello world";
+
 		$scope.clickExample = function(){
 			notify.sendNotification({
-				"level":"warning",
-				"text":"Your in trouble!!!",
-				"duration":3000		
+				level:$scope.extra_class.name,
+				text:$scope.text,
+				duration:$scope.duration	
 			});
 		}
-	
-		$scope.xmp = "test";
 	}
 ]);
