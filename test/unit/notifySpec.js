@@ -5,7 +5,7 @@ describe('notify directives', function() {
 
 	var scope, ctrl;
 
-	beforeEach(module('notify')); 
+	beforeEach(module('notifier.directives')); 
 
 
   describe('Notify', function() {
@@ -25,3 +25,34 @@ describe('notify directives', function() {
 
  });
 });
+
+describe('notify service', function(){
+
+	beforeEach(module("notifier.services"));
+
+	describe('notifier', function(){
+
+		var service,scope, props;
+
+		beforeEach(inject(function($injector, $rootScope, notifierService){
+			service = notifierService;
+			scope = $rootScope;
+			props = {
+				level:"alert",
+				duration: 1223,
+				text:"tada"
+			};
+		}));
+
+		// Test broadcast
+		it('should send out broadcast', function(){
+			
+			var fun = scope.$on("notify.newNotification", function(event, data){
+				expect(data.text === 'tada');
+			});
+
+			service.sendNotification(props);
+		});
+
+	})
+})
