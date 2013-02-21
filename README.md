@@ -6,7 +6,10 @@ Right now, a simple pop-up system designed to help notify users when certian act
 ### Usage
 
 There are two parts of the sytem, the first is the directive. With in your controller:
+```html
     <div notifier></div>
+```
+
 
 Then, to notify a user you use the ntofierService:
     
