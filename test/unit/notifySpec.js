@@ -21,10 +21,9 @@ describe('notify directives', function() {
 		}
 	  );
 	});
-
-
  });
 });
+
 
 describe('notify service', function(){
 

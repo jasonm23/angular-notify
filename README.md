@@ -1,15 +1,24 @@
-angular-notify
+Angular Notifier
 ==============
 
-This is a small angular tool set to help notify users with dialogs, popups, etc.
+Right now, a simple pop-up system designed to help notify users when certian actions have occured.
 
-#Goals
+### Usage
 
-##Project Goals
-*Create a useful, easy to use tool
-*Modular
+There are two parts of the sytem, the first is the directive. With in your controller:
+    <div notifier></div>
 
+Then, to notify a user you use the ntofierService:
+    
+```javascript
+notify.sendNotification({
+	level:$scope.extra_class.name,
+	text:$scope.text,
+	duration:$scope.duration	
+});
+```
 
-##Personal Goals
-*Gain Better understanding of testing javascript.  
-*Gain Better understanding of Angularjs
+Where:
+*`level` is the level of the error.  Right now, it is just the extra class that is appened to the notifier element.
+*`text` is the text to display.
+*`duration` is how long to display the info.

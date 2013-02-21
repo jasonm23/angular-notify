@@ -5,17 +5,11 @@ angular.module('notifier.services', [])
 
 	var notifyImpl = {};
 
-	/*
-	 * Sends out the notification.
-	 *
-	 * @param props properites object for the nofication.
-	 */
+	// Send out a notification to the system.
 	notifyImpl.sendNotification = function( props ){
 		$scope.$broadcast("notify.newNotification", props);
 	}
 	return notifyImpl;
-
-
 }]);
 
 
@@ -26,6 +20,10 @@ angular.module('notifier.directives', [])
 		
 		replace:false, 
 		restrict:'A',
+		template:
+			'<div id="notifier-container"> '+
+			' <div ng-transclude></div>' +
+			'</div>',
 		link: function(scope, iElement, iAttrs, controller){
 			
 			var ele = $(iElement);
@@ -39,7 +37,7 @@ angular.module('notifier.directives', [])
 			function showAlert(){
 				if(ele.css("display") === "none"){
 					ele.slideDown("slow");
-				}				
+				}
 				setTimeout(function(){hideAlert();}, duration);
 			}
 			
@@ -48,15 +46,15 @@ angular.module('notifier.directives', [])
 			}
 
 			// Listen to the broadcast the service sends out.
-			scope.$on("notify.newNotification", function(event, somethingelse){
+			scope.$on("notify.newNotification", function(event, props){
 				
 				// Remove the old applied class.
 				ele.removeClass(extra_class);
 				
-				extra_class = somethingelse.level;
-				duration = somethingelse.duration;
+				extra_class = props.level;
+				duration = props.duration;
 
-				ele.html(somethingelse.text);
+				ele.html(props.text);
 				ele.addClass(extra_class);
 
 				showAlert();
