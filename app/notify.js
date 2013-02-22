@@ -14,31 +14,33 @@ angular.module('notifier.services', [])
 
 
 angular.module('notifier.directives', [])
-.directive('notify', function(){
+.directive('notify', ['$timeout', function($timeout){
 
 	return {
-		
+	//	transclude:'element',
 		replace:false, 
 		restrict:'A',
-		template:
-			'<div id="notifier-container"> '+
-			' <div ng-transclude></div>' +
-			'</div>',
+	//	template:
+	//		'<div id="notifier-container"> '+
+	//		' <div ng-transclude></div>' +
+	//		'</div>',
 		link: function(scope, iElement, iAttrs, controller){
 			
-			var ele = $(iElement);
-			
-			var extra_class = "";
-			var duration = 1000;
+			var ele = $(iElement),
+				extra_class = "",
+				duration = 1000,
+				timeout = null;
 			
 			// Default: make sure the element is hidden.
 			ele.css("display", "none");
 
 			function showAlert(){
 				if(ele.css("display") === "none"){
+					
+
 					ele.slideDown("slow");
 				}
-				setTimeout(function(){hideAlert();}, duration);
+				timeout = $timeout(function(){hideAlert();}, duration);
 			}
 			
 			function hideAlert(){
@@ -48,6 +50,10 @@ angular.module('notifier.directives', [])
 			// Listen to the broadcast the service sends out.
 			scope.$on("notify.newNotification", function(event, props){
 				
+				if( timeout !== null ){
+					$timeout.cancel(timeout);
+				}
+					
 				// Remove the old applied class.
 				ele.removeClass(extra_class);
 				
@@ -61,4 +67,4 @@ angular.module('notifier.directives', [])
 			});
 		}
 	};
-});
+}]);
