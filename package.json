@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "a simple angular notification system",
   "scripts": {
-    "test": "./node_modules/.bin/testacular start --browsers Firefox --single-run"
+    "test": "./node_modules/.bin/testacular start config/testacular.conf.js --browsers Firefox --single-run"
   },
   "devDependencies": {
     "testacular": "0.6"
