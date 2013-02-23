@@ -1,2 +1,4 @@
-components
-/nbproject/private/
+/components
+/nbproject
+/node_modules
+
