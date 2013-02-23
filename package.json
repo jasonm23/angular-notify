@@ -1,17 +1,11 @@
 {
   "name": "angular-notify",
   "version": "0.1.0",
-  "author": "Nathan Norton <nathan.norton@hotmail.com>",
   "description": "a simple angular notification system",
-  
   "scripts": {
-    "start": "node ./bin/http-server",
-    "test": "./node_modules/.bin/testacular start config/testacular.confg.js",
+    "test": "./node_modules/.bin/testacular start config/testacular.confg.js"
   },
-
   "devDependencies": {
-    "testacular": "~0.6"
-  },
-  
-  "license": "MIT"
+    "testacular": "0.6"
+  }
 }
