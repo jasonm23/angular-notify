@@ -47,7 +47,7 @@ logLevel = LOG_INFO;
 
 
 // enable / disable watching file and executing tests whenever any file changes
-autoWatch = disable;
+autoWatch = false;
 
 
 // Start these browsers, currently available:
@@ -58,11 +58,11 @@ autoWatch = disable;
 // - Safari (only Mac)
 // - PhantomJS
 // - IE (only Windows)
-browsers = [];
+browsers = ['Firefox'];
 
 
 // If browser does not capture in given timeout [ms], kill it
-captureTimeout = 5000;
+captureTimeout = 8000;
 
 
 // Continuous Integration mode

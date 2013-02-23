@@ -1,6 +1,8 @@
 Angular Notifier
 ==============
 
+[![Build Status](https://secure.travis-ci.org/Xesued/angular-notify.png)](http://travis-ci.org/Xesued/angular-notify)
+
 Right now, a simple pop-up system designed to help notify users when certian actions have occured.
 
 ### Usage
@@ -15,9 +17,9 @@ Then, to notify a user you use the ntofierService:
     
 ```javascript
 notify.sendNotification({
-	level:$scope.extra_class.name,
-	text:$scope.text,
-	duration:$scope.duration	
+	level:'css-class',
+	text:'Hello there',
+	duration:5000	
 });
 ```
 
