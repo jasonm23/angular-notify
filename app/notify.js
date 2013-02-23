@@ -16,31 +16,32 @@ angular.module('notifier.services', [])
   .directive('notify', ['$timeout', function ($timeout) {
 
     return {
-      //	transclude:'element',
+      transclude:'element',
       replace:false, 
       restrict:'A',
-      //	template:
-      //		'<div id="notifier-container"> '+
-      //		' <div ng-transclude></div>' +
-      //		'</div>',
+      	template:
+          '<div id="notifier-container"> '+
+          ' <div ng-transclude></div>' +
+          '</div>',
       link: function (scope, iElement, iAttrs, controller) {
 
         var ele = $(iElement),
-        extra_class = "",
-        duration = 1000,
-        timeout = null;
+                  extra_class = "",
+                  duration = 1000,
+                  timeout = null,
+                  popups = [];
 
         // Default: make sure the element is hidden.
         ele.css("display", "none");
 
-        function showAlert(){
+        function showAlert(popup){
           if(ele.css("display") === "none"){
             ele.slideDown("slow");
           }
           timeout = $timeout(function(){hideAlert();}, duration);
         }
 
-        function hideAlert() {
+        function hideAlert(popup) {
           ele.slideUp("slow");
         }
 

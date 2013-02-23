@@ -22,6 +22,7 @@ notify.sendNotification({
 ```
 
 Where:
-*`level` is the level of the error.  Right now, it is just the extra class that is appened to the notifier element.
-*`text` is the text to display.
-*`duration` is how long to display the info.
+
+* `level` is the level of the error.  Right now, it is just the extra class that is appened to the notifier element.
+* `text` is the text to display.
+* `duration` is how long to display the info.
