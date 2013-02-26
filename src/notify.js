@@ -33,7 +33,7 @@ angular.module('notifier.services', [])
   
 
   angular.module('notifier.directives', [])
-  .directive('notify', ['$timeout','notifierService', function ($timeout, notifier) {
+  .directive('notify', ['$timeout', function ($timeout) {
 
     return {
       replace:false, 
