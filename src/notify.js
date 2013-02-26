@@ -4,25 +4,41 @@ angular.module('notifier.services', [])
 
     var notifyImpl = {};
 
+    notifyImpl.notifications = [];
+
+
     // Send out a notification to the system.
     notifyImpl.sendNotification = function (props) {
+      var nofication = {
+        read: true,
+        closed: false,
+        text: props.text,
+        level: props.level
+      };
+
       $scope.$broadcast("notify.newNotification", props);
     }
 
+    notifyImpl.getNotifications = function () {
+      return notifyImpl.notifications;
+    }
+
+    notifyImpl.readNotification = function (index) {
+      notifyImpl.notifications.read = true;
+    }
+
     return notifyImpl;
+    
   }]);
+  
 
   angular.module('notifier.directives', [])
-  .directive('notify', ['$timeout', function ($timeout) {
+  .directive('notify', ['$timeout','notifierService', function ($timeout, notifier) {
 
     return {
-     // transclude:'element',
       replace:false, 
       restrict:'A',
-      	// template:
-       //    '<div id="notifier-container"> '+
-       //    ' <div ng-transclude></div>' +
-       //    '</div>',
+    
       link: function (scope, iElement, iAttrs, controller) {
 
         var ele = $(iElement),
@@ -44,6 +60,8 @@ angular.module('notifier.services', [])
         function hideAlert() {
           ele.slideUp("slow");
         }
+
+        ele.bind("onclick", showAlert);
 
         // Listen to the broadcast the service sends out.
         scope.$on("notify.newNotification", function (event, props) {

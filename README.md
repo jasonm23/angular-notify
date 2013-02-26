@@ -3,7 +3,7 @@ Angular Notifier
 
 [![Build Status](https://secure.travis-ci.org/Xesued/angular-notify.png)](http://travis-ci.org/Xesued/angular-notify)
 
-Right now, a simple pop-up system designed to help notify users when certian actions have occured.
+Right now, a simple pop-up system designed to help notify users when certain actions have occured.
 
 ### Usage
 
@@ -13,7 +13,7 @@ There are two parts of the sytem, the first is the directive. With in your contr
 ```
 
 
-Then, to notify a user you use the ntofierService:
+Then, to notify a user you use the notfierService:
     
 ```javascript
 notify.sendNotification({
@@ -28,3 +28,16 @@ Where:
 * `level` is the level of the error.  Right now, it is just the extra class that is appened to the notifier element.
 * `text` is the text to display.
 * `duration` is how long to display the info.
+
+
+### Building
+
+* Install `node.js`
+* Install `grunt-cli`
+* In project folder run: `sudo npm install`
+* Run: `grunt`
+
+
+### Testing
+
+* Run 'testacular start config/testacular.conf.js'
