@@ -19,7 +19,7 @@ module.exports = function(grunt) {
           banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
         },
         files: {
-          'dist/<%= pkg.name %>.min.js':['src/notify.js']
+          'dist/<%= pkg.name %>-<%= pkg.version %>.min.js':['src/notify.js']
         }
       }
     },

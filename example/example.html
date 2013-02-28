@@ -14,10 +14,11 @@
       .notify{
         padding: 5px 10px;
         position:absolute;
-        left: 25%;
-        top: 50%;
+        bottom: 0px;
+        right:0px;
         width: 200px;
       }
+
     </style>
   </head>
 
@@ -28,7 +29,7 @@
       <fieldset>
       <legend>Options</legend>
       <label>Extra Class:</label>
-      <select ng-model="extra_class" ng-options="c.name for c in extra_classes"></select>
+      <select name="level" ng-model="extra_class" ng-options="c.name for c in extra_classes"></select>
       <label>Duration</label>
       <input type="text" ng-model="duration" />
       <label>Text You want to display!</label>
@@ -38,7 +39,6 @@
     <button class="btn btn-primary" ng-click="clickExample()">Show Notification</button>
 
     <!-- Required Directive -->
-    <div class="notify" notify />
-    </div>
+    <div class="notify" notify /></div>
   </body>
 </html>
