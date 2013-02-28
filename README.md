@@ -5,7 +5,8 @@ Angular Notifier
 
 Right now, a simple pop-up system designed to help notify users when certain actions have occured.
 
-### Usage
+Usage
+-----
 
 There are two parts of the sytem, the first is the directive. With in your controller:
 ```html
@@ -30,7 +31,8 @@ Where:
 * `duration` is how long to display the info.
 
 
-### Building
+Building
+--------
 
 * Install `node.js`
 * Install `grunt-cli`
@@ -38,6 +40,7 @@ Where:
 * Run: `grunt`
 
 
-### Testing
+Testing
+-------
 
-* Run 'testacular start config/testacular.conf.js'
+* Run `npm test`
