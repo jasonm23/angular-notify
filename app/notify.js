@@ -1,13 +1,24 @@
 angular.module('notifier.services', [])
 
   .factory('notifierService', ['$rootScope', function ($scope) {
-
     var notifyImpl = {};
+    notifyImpl.notifications = [];
 
     // Send out a notification to the system.
     notifyImpl.sendNotification = function (props) {
       $scope.$broadcast("notify.newNotification", props);
-    }
+      notifyImpl.notifications.push(props);
+    };
+
+    notifyImpl.getNotifications = function () {
+      return notifyImpl.notifications;
+    };
+  
+    notifyImpl.removeNotification = function (index) {
+      if( (notifyImpl.notifications.length - 1) >= index){
+        notifyImpl.notifications.splice(index, 1);
+      }
+    };
 
     return notifyImpl;
   }]);
@@ -23,7 +34,7 @@ angular.module('notifier.services', [])
       //		'<div id="notifier-container"> '+
       //		' <div ng-transclude></div>' +
       //		'</div>',
-      link: function (scope, iElement, iAttrs, controller) {
+      link: function (scope, iElement, iAttrs, controller) { 
 
         var ele = $(iElement),
         extra_class = "",
