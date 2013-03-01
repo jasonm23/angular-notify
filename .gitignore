@@ -1,2 +1,6 @@
-components
-/nbproject/private/
+/components
+/nbproject
+/node_modules
+/dist
+*.sublime-project
+*.sublime-workspace

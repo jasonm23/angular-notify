@@ -1,46 +1,44 @@
 <html>
-	<head>
-		<title>Test notify script</title>
-		
-		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+  <head>
+    <title>Test notify scripty</title>
 
-		<script type="text/javascript" src="../app/lib/jquery/jquery.min.js"></script>
-		<script type="text/javascript" src="../app/lib/angular/angular.js"></script>
-		<script type="text/javascript" src="../app/notify.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/example.js"></script>
-		<style type="text/css">
-			.notify{
-				padding: 5px 10px;
-				position:absolute;
-				left: 25%;
-				top: 50%;
-				width: 200px;
-			}
-		</style>
-	</head>
+    <script type="text/javascript" src="../components/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../src/notify.js"></script>
 
-	<body ng-app="exampleApp">
-		<div ng-controller="ExampleCtrl">
-			<h1>Notify Example</h1>
-			<form>
-				<fieldset>
-					<legend>Options</legend>
-					<label>Extra Class:</label>
-					<select ng-model="extra_class" ng-options="c.name for c in extra_classes"></select>
-					<label>Duration</label>
-					<input type="text" ng-model="duration" />
-					<label>Text</label>
-					<textarea ng-model="text"></textarea>
-				</fieldset>
-			</form>
-			<button class="btn btn-primary" ng-click="clickExample()">
-				Show Notification
-			</button>
-			
-			<!-- Required Directive -->
-			<div class="notify" notify model="xmp" />
-		</div>
-	</body>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/example.js"></script>
+    <style type="text/css">
+      .notify{
+        padding: 5px 10px;
+        position:absolute;
+        bottom: 0px;
+        right:0px;
+        width: 200px;
+      }
+
+    </style>
+  </head>
+
+  <body ng-app="exampleApp">
+    <div ng-controller="ExampleCtrl">
+    <h1>Notify Example</h1>
+    <form>
+      <fieldset>
+      <legend>Options</legend>
+      <label>Extra Class:</label>
+      <select name="level" ng-model="extra_class" ng-options="c.name for c in extra_classes"></select>
+      <label>Duration</label>
+      <input type="text" ng-model="duration" />
+      <label>Text You want to display!</label>
+      <textarea ng-model="text"></textarea>
+      </fieldset>
+    </form>
+    <button class="btn btn-primary" ng-click="clickExample()">Show Notification</button>
+
+    <!-- Required Directive -->
+    <div class="notify" notify /></div>
+  </body>
 </html>
